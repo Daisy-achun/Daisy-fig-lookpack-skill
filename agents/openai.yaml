@@ -1,12 +1,12 @@
 interface:
-  display_name: "Paper Framework Diagram"
-  short_description: "Editable publication-ready paper framework / pipeline figures"
-  brand_color: "#5B7A9D"
+  display_name: "Fig Lookpack"
+  short_description: "Pastel composition×look packs for CS paper Fig.1 / method flowcharts"
+  brand_color: "#6A9A6E"
   default_prompt: >-
-    Use $paper-framework-diagram (quality gates) and
-    $paper-architecture-diagram (PPT workflow) to turn this Method into an
-    editable publication-ready Fig.1. Follow my reference figures; do not force
-    a single layout. Large type, no overlap/overflow, true math subscripts,
-    accurate chips; export editable PPTX + SVG + PNG.
+    Use $fig-lookpack to lock one composition × look from the pastel look-pack
+    system, then draw an editable publication-ready Fig.1 from this Method.
+    Prefer stage-band / modular-rail / dual-stream / agent-panel grammar as
+    routed by structure. Large type, no nested white boxes, true math
+    subscripts; export editable PPTX + SVG + PNG.
 policy:
   allow_implicit_invocation: true

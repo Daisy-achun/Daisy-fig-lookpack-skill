@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Smoke-test paper-framework-diagram skill packs + routing + gold agent-panel render.
+"""Smoke-test fig-lookpack skill packs + routing.
 
-Run from repo root:
-  .venv/bin/python .cursor/skills/paper-framework-diagram/scripts/smoke_test_skill.py
-Optional: --render to re-export gold Band-Routing figure.
+Run from skill root:
+  python scripts/smoke_test_skill.py
+Optional: --render to re-export a gold figure when a renderer is present.
 """
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]  # skill dir
 REPO = ROOT.parents[2] if (ROOT.parents[2] / "scripts").exists() else Path.cwd()
-# skill at .cursor/skills/paper-framework-diagram → repo is parents[2]
+# skill at .cursor/skills/fig-lookpack → repo is parents[2]
 for cand in [Path.cwd(), ROOT.parents[2], ROOT.parents[3]]:
     if (cand / "scripts" / "render_tool_aware_framework_fig.py").exists():
         REPO = cand
@@ -23,7 +23,7 @@ for cand in [Path.cwd(), ROOT.parents[2], ROOT.parents[3]]:
 
 CORES = [
     "agent-panel",
-    "morandi-pipeline",
+    "modular-pastel-stack",
     "rl-grpo-chain",
     "stage-band-pastel",
     "dual-modality-gradient",
@@ -79,14 +79,20 @@ def audit_docs() -> list[str]:
         if c not in router or c not in catalog:
             errs.append(f"core {c} not listed in router/catalog")
 
-    # anti-residue (ignore ROLLBACK)
+    # anti-residue / public hygiene
     bad = [
         r"不要列 A/B/C",
         r"用户要换风格时必须",
+        r"AI\s*绘图指令",
+        r"顶会",
+        r"蒸馏",
+        r"Zotero",
+        r"第三方.*裁切",
+        r"论文图裁切",
+        r"public scrub",
+        r"CVPR,\s*ICCV",
     ]
     for p in ROOT.rglob("*.md"):
-        if "ROLLBACK" in p.name:
-            continue
         t = p.read_text(encoding="utf-8")
         for pat in bad:
             if re.search(pat, t):
@@ -101,7 +107,7 @@ def simulate_routing() -> list[str]:
 
     cases = [
         ("控制环 + 工具", "agent-panel", True),
-        ("L→R 模块轨", "morandi-pipeline", True),
+        ("L→R 模块轨", "modular-pastel-stack", True),
         ("监督微调 → 强化学习", "rl-grpo-chain", True),
         ("明确 Stage1/2/3", "stage-band-pastel", True),
         ("两路并行再汇合", "dual-modality-gradient", True),
@@ -185,7 +191,7 @@ def main() -> int:
 
     errs.extend(qa_gold_png(png))
 
-    print("=== paper-framework-diagram smoke test ===")
+    print("=== fig-lookpack smoke test ===")
     print("skill", ROOT)
     print("repo ", REPO)
     if errs:
