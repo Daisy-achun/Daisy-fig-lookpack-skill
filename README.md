@@ -96,8 +96,8 @@ scripts/smoke_test_skill.py
 
 ## GitHub About（可粘贴）
 
-- **Description：**  
-  `Agent Skill (fig-lookpack): pastel composition×look packs for CS paper Fig.1. Flat Cursor-native layout for style-pack work. Sibling of Daisy-paper-diagram-skill.`
+- **简介：**  
+  `论文 Fig.1 风格包 Skill（fig-lookpack）：pastel 构图×观感 packs；扁平目录，便于维护 look。姊妹仓：Daisy-paper-diagram-skill。`
 - **Topics：** `agent-skills` · `cursor` · `paper-figures` · `lookpack` · `scientific-visualization` · `svg` · `pptx`
 
 ---
